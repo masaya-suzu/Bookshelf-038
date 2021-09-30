@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProtoSpace</title>
+    <title>Book Shelf</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,18 +16,22 @@
         <div class="nav">
           <div class="nav__left">
           </div>
+          <% if user_signed_in? %>
           <%# ログインしているときは以下を表示するようにしましょう %>
-            <%# <div class="nav__right"> %>
-              <%# <%= link_to "ログアウト", root_path, class: :nav__logout %>
-              <%# <%= link_to "New Proto", root_path, class: :nav__btn %>
-            <%# </div> %>
+             <div class="nav__right"> 
+               <%= link_to "ログアウト", root_path, class: :nav__logout %>
+               <%= link_to "New Book", root_path, class: :nav__btn %>
+               <%= link_to "こんにちは、#{current_user.name}さん", user_path(current_user.id) %>
+             </div> 
           <%# // ログインしているときは上記を表示するようにしましょう %>
+          <% else %>
           <%# ログインしていないときは以下を表示するようにしましょう %>
             <div class="nav__right">
-              <%= link_to "ログイン", root_path, class: :nav__btn %>
-              <%= link_to "新規登録", root_path, class: :nav__btn %>
+              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
             </div>
           <%# // ログインしていないときは上記を表示するようにしましょう %>
+          <% end %>
         </div>
       </div>
     </header>
