@@ -1,8 +1,8 @@
 class Medium < ActiveHash::Base
   self.data = [
-    {id: 1, prefecture: '--' },
-    {id: 2, prefecture: '紙'},
-    {id: 3, prefecture: '電子'}
+    {id: 1, medium: '--' },
+    {id: 2, medium: '紙'},
+    {id: 3, medium: '電子'}
   ]
 
   include ActiveHash::Associations

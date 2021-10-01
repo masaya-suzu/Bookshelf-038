@@ -1,0 +1,45 @@
+<%= form_with model: @books, local: true do |f|%>
+  <div class="field">
+    <%= f.label :book_title, "本のタイトル" %><br />
+    <%= f.text_field :book_title, id:"book_title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :book_number, "巻数" %><br />
+    <%= f.text_field :book_number, id:"book_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :book_author, "作者" %><br />
+    <%= f.text_field :book_author, id:"book_author" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :book_genre, "ジャンル" %><br />
+    <%= f.text_field :book_genre, id:"book_genre" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :book_publisher, "出版社" %><br />
+    <%= f.text_field :book_publisher, id:"book_publisher" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :book_type, "タイプ" %><br />
+    <%= f.text_field :book_type, id:"book_type" %>
+  </div>
+
+  <div class="field">
+    <%#= f.label :book_medium_id, "媒体" %><br />
+    <%#= f.collection_select(:book_medium_id, BookMedium.all, :id, :medium, {}, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "プロトタイプの画像" %><br />
+    <%= f.file_field :image, id:"book_image" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

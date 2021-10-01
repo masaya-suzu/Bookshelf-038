@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  belongs_to :medium
+  #belongs_to :medium
 
   validates :book_title, presence: true
   validates :book_number, presence: true
@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   validates :book_genre, presence: true
   validates :book_publisher, presence: true
   validates :book_type, presence: true
-  validates :book_medium_id, numericality: { other_than: 1, message: "Select" }
+  #validates :book_medium_id, numericality: { other_than: 1, message: "Select" }
   validates :image, presence: true
 
 
@@ -17,4 +17,11 @@ class Book < ApplicationRecord
     self.image.attached?
   end
 
+  def self.search(search)
+    if search != ""
+      Book.where('text LIKE(?)', "%#{search}%")
+    else
+      Book.all
+    end
+  end
 end
